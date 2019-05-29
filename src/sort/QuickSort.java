@@ -12,32 +12,24 @@ package sort;
 public class QuickSort {
      
     private int array[];
-    private int length;
+    private int tamanho;
  
-    public void sort(int[] inputArr) {
+    public void sort(int[] inoutArray) {
          
-        if (inputArr == null || inputArr.length == 0) {
+        if (inoutArray == null || inoutArray.length == 0) {
             return;
         }
-        this.array = inputArr;
-        length = inputArr.length;
-        quickSort(0, length - 1);
+        this.array = inoutArray;
+        tamanho = inoutArray.length;
+        quickSort(0, tamanho - 1);
     }
  
-    private void quickSort(int lowerIndex, int higherIndex) {
+    private void quickSort(int indiceMenor, int indiceMaior) {
          
-        int i = lowerIndex;
-        int j = higherIndex;
-        // calculate pivot number, I am taking pivot as middle index number
-        int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
-        // Divide into two arrays
+        int i = indiceMenor;
+        int j = indiceMaior;
+        int pivot = array[indiceMenor+(indiceMaior-indiceMenor)/2];
         while (i <= j) {
-            /**
-             * In each iteration, we will identify a number from left side which 
-             * is greater then the pivot value, and also we will identify a number 
-             * from right side which is less then the pivot value. Once the search 
-             * is done, then we exchange both numbers.
-             */
             while (array[i] < pivot) {
                 i++;
             }
@@ -46,16 +38,14 @@ public class QuickSort {
             }
             if (i <= j) {
                 exchangeNumbers(i, j);
-                //move index to next position on both sides
                 i++;
                 j--;
             }
         }
-        // call quickSort() method recursively
-        if (lowerIndex < j)
-            quickSort(lowerIndex, j);
-        if (i < higherIndex)
-            quickSort(i, higherIndex);
+        if (indiceMenor < j)
+            quickSort(indiceMenor, j);
+        if (i < indiceMaior)
+            quickSort(i, indiceMaior);
     }
  
     private void exchangeNumbers(int i, int j) {

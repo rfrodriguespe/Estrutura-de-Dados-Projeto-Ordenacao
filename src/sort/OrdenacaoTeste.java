@@ -50,7 +50,7 @@ public class OrdenacaoTeste {
                     break;
                 case "c":
                     MergeSort mms = new MergeSort();
-                    mms.sort(array);
+                    mms.mergeSort(array);
                     for (int i : array) {
                         System.out.print(i);
                         System.out.print(", ");
